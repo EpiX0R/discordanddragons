@@ -1,4 +1,4 @@
-const RepoHandler = require("./handlers/RepoHandler.js");
+const CharacterHandler = require("./handlers/CharacterHandler.js");
 //const PlanningHandler = require("./handlers/PlanningHandler.js");
 
 /**
@@ -9,7 +9,7 @@ class CommandHandler {
      * Construct method, prepares handlers
      */
     constructor() {
-        this.rh = new RepoHandler();
+        this.rh = new CharacterHandler();
     }
 
     /**
