@@ -1,14 +1,19 @@
-Popcorn - A Discord Bot
+DiscordAndDragons - A Discord Bot
 =======================
 
-Popcorn is a GitHub listener with the purpose of displaying Git history and activity from followed repositories. Popcorn is developed for Discord and "pops" every time the Bot finds something new on one of the followed repositories, sending a message to a specified channel.
+DiscordAndDragons is a Discord Bot created with the intent of maintaining a long term DnD session within your Discord server.
+
+
+**DISCLAIMER:**
+
+**THIS PROJECT IS HEAVILY WIP AND MIGHT NOT INCLUDE ALL OR CERTAIN OF DUNGEON AND DRAGONS CONTENT.**
 
 # Installation
 
 1. Clone the Repository
 
 ```
-git clone https://github.com/EpiX0R/popcorn.git
+git clone https://github.com/EpiX0R/discordanddragons.git
 ```
 
 2. Install required packages
@@ -22,5 +27,5 @@ npm install
 Launch the appropriate version from your command line.
 
 ```
-node popcorn.js
+node discordnd.js
 ```

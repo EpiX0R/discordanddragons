@@ -4,9 +4,9 @@ const CommandHandler = require("./CommandHandler.js");
 const Logger = require("./base/logger.js");
 
 /**
- * Class for the Popcorn bot
+ * Class for the DiscordAndDragons bot
  */
-class Popcorn {
+class DiscordAndDragons {
 
     /**
      * Retrieves needed packages & files and loads configurations
@@ -37,4 +37,4 @@ class Popcorn {
     }
 }
 
-module.exports = Popcorn;
+module.exports = DiscordAndDragons;
