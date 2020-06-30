@@ -1,5 +1,5 @@
 /**
- * A RepoHander object for usage in CommandHandler, handles all "#!repo commands".
+ * A CharacterHander object for usage in CommandHandler, handles all "#!character commands".
  */
 class CharacterHandler {
     /**
