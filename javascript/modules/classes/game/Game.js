@@ -1,0 +1,56 @@
+/**
+ * A class that handles basic Game functions, like storing players, rotating players, etc.
+*/
+
+class Game {
+    
+    var numplayers;
+    var currplayer;
+    var dm;
+    //Arr of discord Id:s corresponding to players
+    let players = [];
+    let orderArr = [];
+
+    function Game(numplayers,players,dm /*etc?*/) {
+        this.numplayers = numplayers;
+        //Pseudo code 
+        this.players = players;
+    }
+
+    function gameInit() {
+        for (var i = 0; i < numplayers; i++) {
+            //Prompt current player to choose what character from DB they pick
+            pickChar(idArr[i]);
+        }
+
+        currplayer = dm;
+    }
+
+    function turnInit() {
+        //All players roll, then the order array is updated
+        for (var i = 0; i < numplayers; i++) {
+            var c = getCharacter(players[i]);
+            c.roll();
+            orderArr[players[i]] = c.lastRoll;
+        }
+    }
+
+    function nextPlayer() {
+
+        for(var key in arr)
+        {
+            var value = arr[key];
+            if(value == Math.max(orderArr)) {
+                currPlayer = key;
+            }
+            arr[key] = 0;
+        }
+
+        play_turn(dm);
+    }
+
+    function playTurn() {
+        action(currplayer);
+    }
+
+}
