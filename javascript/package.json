@@ -1,0 +1,28 @@
+{
+  "name": "popcorn",
+  "version": "0.0.1",
+  "description": "A Discord Bot for following, displaying and interacting with GitHub repositories.",
+  "main": "popcorn.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EpiX0R/popcorn.git"
+  },
+  "keywords": [
+    "popcorn",
+    "discord",
+    "github",
+    "bot"
+  ],
+  "author": "Jakob \"EpiX0R\" Eriksson",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/EpiX0R/popcorn/issues"
+  },
+  "homepage": "https://github.com/EpiX0R/popcorn#readme",
+  "dependencies": {
+    "discord.js": "github:discordjs/discord.js"
+  }
+}
