@@ -1,7 +1,7 @@
 /**
  * A RepoHander object for usage in CommandHandler, handles all "#!repo commands".
  */
-class RepoHandler {
+class CharacterHandler {
     /**
      * Determines which function to use upon command execution.
      *
@@ -15,4 +15,4 @@ class RepoHandler {
     }
 }
 
-module.exports = RepoHandler;
+module.exports = CharacterHandler;
