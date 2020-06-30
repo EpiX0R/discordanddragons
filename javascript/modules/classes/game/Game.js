@@ -9,6 +9,7 @@ class Game {
         this.players = players;
         this.currplayer;
         this.dm = dm;
+        this.orderArr = [];
     }
 
     gameInit() {
@@ -44,6 +45,8 @@ class Game {
     }
 
     playTurn() {
+        //Maybe check if player stunned, dead, or something? 
+        if(getCharacter(currplayer).health == 0 )
         action(currplayer);
     }
 
