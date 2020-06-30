@@ -46,8 +46,14 @@ class Game {
 
     playTurn() {
         //Maybe check if player stunned, dead, or something? 
-        if(getCharacter(currplayer).health == 0 )
-        action(currplayer);
+        var c = getCharacter(currplayer);
+        if(c.health == 0 || c.attr == "stunned") {
+            this.nextPlayer();
+        }
+        else {
+            action(currplayer);
+        }
+
     }
 
 }
