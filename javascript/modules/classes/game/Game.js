@@ -3,21 +3,15 @@
 */
 
 class Game {
-    
-    var numplayers;
-    var currplayer;
-    var dm;
-    //Arr of discord Id:s corresponding to players
-    let players = [];
-    let orderArr = [];
 
-    function Game(numplayers,players,dm /*etc?*/) {
+    constructor(numplayers,players,dm /*etc?*/) {
         this.numplayers = numplayers;
-        //Pseudo code 
         this.players = players;
+        this.currplayer;
+        this.dm = dm;
     }
 
-    function gameInit() {
+    gameInit() {
         for (var i = 0; i < numplayers; i++) {
             //Prompt current player to choose what character from DB they pick
             pickChar(idArr[i]);
@@ -26,7 +20,7 @@ class Game {
         currplayer = dm;
     }
 
-    function turnInit() {
+    turnInit() {
         //All players roll, then the order array is updated
         for (var i = 0; i < numplayers; i++) {
             var c = getCharacter(players[i]);
@@ -35,7 +29,7 @@ class Game {
         }
     }
 
-    function nextPlayer() {
+    nextPlayer() {
 
         for(var key in arr)
         {
@@ -49,7 +43,7 @@ class Game {
         play_turn(dm);
     }
 
-    function playTurn() {
+    playTurn() {
         action(currplayer);
     }
 
