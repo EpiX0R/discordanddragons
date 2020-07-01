@@ -8,12 +8,12 @@ class Class {
     constructor() {
         /* Generic */
         this.name = "Class";
-        this.short_description = "Short Description";
-        this.long_description = "Long Description";
+        this.short_description = "Short description.";
+        this.long_description = "Long description.";
 
         /* Class Specific */
-        this.hit_die = "Dice";
-        this.primary_ability = "Primary Ability";
+        this.hit_die = "d0";
+        this.primary_ability = [];
         this.saves = [];
     }
 }

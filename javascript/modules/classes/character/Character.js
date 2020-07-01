@@ -1,3 +1,6 @@
+const Classes = require("../class");
+const Races = require("../race");
+
 /**
  * A generic Character Sheet with attributes and stats. 
  */
@@ -7,68 +10,81 @@ class Character {
      */
     constructor() {
         /* Race */
-        this.race = null;
+        this.race = new Races.Race;
 
         /* Class */
-        this.class = null;
+        this.class = new Classes.Class;
 
         /* Stats */
-        this.strength = 0;
-        this.perception = 0;
-        this.endurance = 0;
-        this.charisma = 0;
-        this.intellegence = 0;
-        this.agility = 0;
-        this.luck = 0;
+        this.attributes = {
+            "strength": 0,
+            "perception": 0,
+            "endurance": 0,
+            "charisma": 0,
+            "intellegence": 0,
+            "agility": 0,
+            "luck": 0
+        }
+    }
+
+    /**
+     * Updates the characters race.
+     *
+     * @param {Object} race_object An appropriate Race class. 
+     */
+    setRace(race_object) {
+        this.race = race_object;
+    }
+
+    /**
+     * Updates the characters class.
+     *
+     * @param {Object} class_object An appropriate Class class. 
+     */
+    setClass(class_object) {
+        this.class = class_object;
     }
 
     /**
      * Updates the characters race by using the Race classes.
      *
-     * @param {String} race_string 
+     * @param {String} race_string The string
      */
     selectRace(race_string) {
         switch(race_string){
-            case "dragonorn":
-                this.race = null;
-                //addRacialStats();
+            case "DRAGONBORN":
+                this.setRace(new Races.Dragonborn);
                 break;
-            case "dwarf":
-                this.race = null;
-                //addRacialStats();
+            case "DWARF":
+                this.setRace(new Races.Dwarf);
                 break;
-            case "elf":
-                this.race = null;
-                //addRacialStats();
+            case "ELF":
+                this.setRace(new Races.Elf);
                 break;
-            case "gnome":
-                this.race = null;
-                //addRacialStats();
+            case "GNOME":
+                this.setRace(new Races.Gnome);
                 break;
-            case "half-elf":
-                this.race = null;
-                //addRacialStats();
+            case "HALF_ELF":
+                this.setRace(new Races.HalfElf);
                 break;
-            case "halfling":
-                this.race = null;
-                //addRacialStats();
+            case "HALFLING":
+                this.setRace(new Races.Halfling);
                 break;
-            case "half-orc":
-                this.race = null;
-                //addRacialStats();
+            case "HALF_ORC":
+                this.setRace(new Races.HalfOrc);
                 break;
-            case "human":
-                this.race = null;
-                //addRacialStats();
+            case "HUMAN":
+                this.setRace(new Races.Human);
                 break;
-            case "tiefling":
-                this.race = null;
-                //addRacialStats();
+            case "TIEFLING":
+                this.setRace(new Races.Tiefling);
                 break;
             default:
-                this.race = null;
+                this.setRace(new Races.Race);
                 break;
         }
+
+        this.addRacialStats();
     }
 
     /**
@@ -78,58 +94,57 @@ class Character {
      */
     selectClass(class_string) {
         switch(class_string){
-            case "barbarian":
-                this.class = null;
-                //addClassStats();
+            case "BARBARIAN":
+                this.setClass(new Classes.Barbarian);
                 break;
-            case "bard":
-                this.class = null;
-                //addClassStats();
+            case "BARD":
+                this.setClass(new Classes.Bard);
                 break;
-            case "cleric":
-                this.class = null;
-                //addClassStats();
+            case "CLERIC":
+                this.setClass(new Classes.Cleric);
                 break;
-            case "druid":
-                this.class = null;
-                //addClassStats();
+            case "DRUID":
+                this.setClass(new Classes.Druid);
                 break;
-            case "fighter":
-                this.class = null;
-                //addClassStats();
+            case "FIGHTER":
+                this.setClass(new Classes.Fighter);
                 break;
-            case "monk":
-                this.class = null;
-                //addClassStats();
+            case "MONK":
+                this.setClass(new Classes.Monk);
                 break;
-            case "paladin":
-                this.class = null;
-                //addClassStats();
+            case "PALADIN":
+                this.setClass(new Classes.Paladin);
                 break;
-            case "ranger":
-                this.class = null;
-                //addClassStats();
+            case "RANGER":
+                this.setClass(new Classes.Ranger);
                 break;
-            case "rogue":
-                this.class = null;
-                //addClassStats();
+            case "ROGUE":
+                this.setClass(new Classes.Rogue);
                 break;
-            case "sorcerer":
-                this.class = null;
-                //addClassStats();
+            case "SORCERER":
+                this.setClass(new Classes.Sorcerer);
                 break;
-            case "warlock":
-                this.class = null;
-                //addClassStats();
+            case "WARLOCK":
+                this.setClass(new Classes.Warlock);
                 break;
-            case "wizard":
-                this.class = null;
-                //addClassStats();
+            case "WIZARD":
+                this.setClass(new Classes.Wizard);
                 break;
             default:
-                this.class = null;
+                this.setClass(new Classes.Class);
                 break;
         }
+    }
+
+    /**
+     * Updates the characters attributes with the additions gained from its race.
+     */
+    addRacialStats() {
+        let racialAttributes = this.race.attributes;
+
+        Object.keys(racialAttributes).forEach(key => {
+            this.attributes[key] += racialAttributes[key];
+        })
     }
 }
 

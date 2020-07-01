@@ -12,13 +12,17 @@ class Race {
         this.long_description = "Long Description";
 
         /* Stat Increases */
-        this.strength = 0;
-        this.perception = 0;
-        this.endurance = 0;
-        this.charisma = 0;
-        this.intellegence = 0;
-        this.agility = 0;
-        this.luck = 0;
+        this.attributes = {
+            "strength": 0,
+            "perception": 0,
+            "endurance": 0,
+            "charisma": 0,
+            "intellegence": 0,
+            "agility": 0,
+            "luck": 0
+        }
+
+        /* Traits */
         this.traits = [];
     }
 }
