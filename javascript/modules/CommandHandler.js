@@ -1,4 +1,4 @@
-const CharacterHandler = require("./handlers/CharacterHandler.js");
+const CharacterHandler = require("./handlers/character/CharacterHandler.js");
 //const PlanningHandler = require("./handlers/PlanningHandler.js");
 
 /**
@@ -9,7 +9,7 @@ class CommandHandler {
      * Construct method, prepares handlers
      */
     constructor() {
-        this.rh = new CharacterHandler();
+        this.character_handler = new CharacterHandler();
     }
 
     /**
@@ -18,11 +18,13 @@ class CommandHandler {
      * @param {Message} msg 
      */
     interpret(msg) {
-        switch(msg.content.substr(0, 6)) {
-            case "#!repo":
-                this.rh.interpret(msg);
-            //case "#!plan":
-            //    PlanningHandler.interpret();
+        let command = msg.content.split(" ")[0];
+
+        switch(command) {
+            case "#!character":
+                this.character_handler.interpret(msg);
+            default:
+                break;
         }
     }
 

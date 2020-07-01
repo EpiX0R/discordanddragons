@@ -6,14 +6,19 @@ const Races = require("../race");
  */
 class Character {
     /**
-     * Constructs stats to a character
+     * Creates a character
      */
-    constructor() {
+    constructor(name, race = new Races.Race, class_object = new Classes.Class) {
+        /* Basic Information */
+        this.name = name;
+        this.level = 1;
+        this.experience = 0;
+
         /* Race */
-        this.race = new Races.Race;
+        this.race = race;
 
         /* Class */
-        this.class = new Classes.Class;
+        this.class = class_object;
 
         /* Stats */
         this.attributes = {
@@ -24,11 +29,15 @@ class Character {
             "intellegence": 0,
             "agility": 0,
             "luck": 0
-        }
+        };
+
+        /* Alignment */
+        // TODO: Alignment boundaries? Chaotic Evil, True Neutral etc? System Required?
+        this.alignment = 50;
     }
 
     /**
-     * Updates the characters race.
+     * Sets the characters race.
      *
      * @param {Object} race_object An appropriate Race class. 
      */
@@ -37,12 +46,21 @@ class Character {
     }
 
     /**
-     * Updates the characters class.
+     * Sets the characters class.
      *
      * @param {Object} class_object An appropriate Class class. 
      */
     setClass(class_object) {
         this.class = class_object;
+    }
+
+    /**
+     * Sets the characters name.
+     *
+     * @param {String} name A string representing the characters name. 
+     */
+    setName(name) {
+        this.name = name;
     }
 
     /**
