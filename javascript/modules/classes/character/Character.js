@@ -7,9 +7,17 @@ const Races = require("../race");
 class Character {
     /**
      * Creates a character
+     *
+     * @param {String} [name] The name of the character.
+     * @param {Races.Race} [race] The race of the character.
+     * @param {Classes.Class} [class_object] The class of the character.
+     * @param {String} owner The owners Discord ID.
      */
-    constructor(name, race = new Races.Race, class_object = new Classes.Class) {
-        /* Basic Information */
+    constructor(name = "Name", race = new Races.Race, class_object = new Classes.Class, owner) {
+        /* Authorization Information */
+        this.owner = owner;
+
+        /* General Information */
         this.name = name;
         this.level = 1;
         this.experience = 0;
@@ -39,7 +47,7 @@ class Character {
     /**
      * Sets the characters race.
      *
-     * @param {Object} race_object An appropriate Race class. 
+     * @param {Races.Race} race_object An appropriate Race class. 
      */
     setRace(race_object) {
         this.race = race_object;
@@ -48,7 +56,7 @@ class Character {
     /**
      * Sets the characters class.
      *
-     * @param {Object} class_object An appropriate Class class. 
+     * @param {Classes.Class} class_object An appropriate Class class. 
      */
     setClass(class_object) {
         this.class = class_object;
@@ -64,9 +72,11 @@ class Character {
     }
 
     /**
-     * Updates the characters race by using the Race classes.
+     * Updates the characters race by using an identifier for Race classes.
+     * 
+     * Available identifiers are "DRAGONBORN", "DWARF", "ELF", "GNOME", "HALF_ELF", "HALFLING", "HALF_ORC", "HUMAN" and "TIEFLING".
      *
-     * @param {String} race_string The string
+     * @param {String} race_string A string identifier representing the race to use, see description.
      */
     selectRace(race_string) {
         switch(race_string){
@@ -106,9 +116,11 @@ class Character {
     }
 
     /**
-     * Updates the characters class by using the Class classes.
+     * Updates the characters class by using an identifier for Class classes.
+     * 
+     * Available identifiers are "BARBARIAN", "BARD", "CLERIC", "DRUID", "FIGHTER", "MONK", "PALADIN", "RANGER", "ROGUE", "SORCERER", "WARLOCK" and "WIZARD".
      *
-     * @param {String} class_string 
+     * @param {String} class_string A string identifier representing the class to use, see description.
      */
     selectClass(class_string) {
         switch(class_string){

@@ -20,7 +20,7 @@ class DiscordAndDragons {
     }
 
     /**
-     * Retrieves needed packages & files and loads configurations
+     * Retrieves needed modules & files and loads configurations
      */
     initialize() {
         this.ch = new CommandHandler();

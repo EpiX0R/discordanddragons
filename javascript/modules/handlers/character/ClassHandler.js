@@ -1,5 +1,5 @@
 /**
- * A ClassHander object for usage in CharacterHandler, handles all "#!character class commands".
+ * A ClassHander object for usage in CharacterHandler, handles all "#!character class ..." commands.
  */
 class ClassHandler {
     /**
@@ -8,12 +8,16 @@ class ClassHandler {
      * @param {Message} msg A Message object.
      */
     interpret(msg) {
-        let command = msg.content.split(" ")[1]
+        let command = msg.content.split(" ")[1];
+        let args = msg.content.split(" ");
+        let user = msg.author.id;
+        
+        // Remove command from argument list
+        arguments.shift();
         
         switch(command) {
             case "create":
-                let character = new Character("Jeff Bezos");
-                console.log(character);
+                let character = new Character();
 
                 break;
             case "class":
@@ -24,4 +28,4 @@ class ClassHandler {
     }
 }
 
-module.exports = CharacterHandler;
+module.exports = ClassHandler;
