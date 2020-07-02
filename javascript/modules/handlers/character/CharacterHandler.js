@@ -13,7 +13,7 @@ class CharacterHandler {
      * Construct method, prepares sub-handlers
      */
     constructor() {
-        this.characters = fs.readdirSync(__dirname + "/../../../../data/characters/");
+        this.characters = this.getCharacterList();
 
         this.class_handler = new ClassHandler();
     }
@@ -26,17 +26,23 @@ class CharacterHandler {
     interpret(msg) {
         let command = msg.content.split(" ")[1]
         let user = msg.author.id;
+        let users_characters = this.getUserCharacterList(user);
         
         switch(command) {
             case "create":
                 let character = new Character(user);
-                let userCharacters = this.getUserCharacterList(user);
 
-                fs.writeFile(__dirname + "/../../../../data/characters/" + user + "_ch" + userCharacters.length + ".json", JSON.stringify(character, null, 2), (err) => {
+                fs.writeFile(__dirname + "/../../../../data/characters/" + user + "_ch" + users_characters.length + ".json", JSON.stringify(character, null, 2), (err) => {
                     if (err) throw err;
                 });
 
-                this.updateCharacterList();
+                this.characters = this.getCharacterList();
+                
+                msg.channel.send("<@" + msg.author.id + ">: Created a new character.");
+
+                break;
+            case "list":
+                msg.channel.send("<@" + msg.author.id + ">'s Characters: \n" + users_characters);
 
                 break;
             case "class":
@@ -58,25 +64,39 @@ class CharacterHandler {
      * @returns {Array} An array the filenames of all characters that this Discord user owns.
      */
     getUserCharacterList(user) {
-        let usersCharacters = [];
+        let users_characters = [];
 
         // Loops all filenames and finds characters for specific user.
         for (let character of this.characters) {
-            let owner = character.split("_")[0];
+            let owner = character.owner;
 
             if (user === owner) {
-                usersCharacters.push(character);
+                users_characters.push(character);
             }
         }
         
-        return usersCharacters;
+        return users_characters;
     }
 
     /**
      * Updates the CharacterHandler objects internal character list by scanning the data/characters/ directory. 
      */
-    updateCharacterList() {
-        this.characters = fs.readdirSync(__dirname + "/../../../../data/characters/");
+    getCharacterList() {
+        let character_files = fs.readdirSync(__dirname + "/../../../../data/characters/");
+        let character_array = [];
+
+        character_files.forEach(file => {
+            fs.readFile(__dirname + "/../../../../data/characters/" + file, 'utf8', function(err, data) {
+                if (err) throw err;
+
+                let character_data = JSON.parse(data);
+                let character = new Character(character_data.owner, character_data.name, character_data.race, character_data.class);
+
+                character_array.push(character);
+            });
+        });
+
+        return character_array;
     }
 }
 

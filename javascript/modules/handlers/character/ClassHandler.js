@@ -3,24 +3,24 @@
  */
 class ClassHandler {
     /**
-     * Determines which character-related function to use upon command execution.
+     * Determines which class-related function to use upon command execution.
      *
      * @param {Message} msg A Message object.
      */
     interpret(msg) {
-        let command = msg.content.split(" ")[1];
-        let args = msg.content.split(" ");
+        let command = msg.content.split(" ")[2];
+        let args = msg.content.split(" ").slice(2);
         let user = msg.author.id;
         
         // Remove command from argument list
         arguments.shift();
         
         switch(command) {
-            case "create":
+            case "select":
                 let character = new Character();
 
                 break;
-            case "class":
+            case "info":
                 break;
             default:
                 break;

@@ -25,6 +25,8 @@ class DiscordAndDragons {
     initialize() {
         this.ch = new CommandHandler();
         this.logger = new Logger();
+
+        this.channel_id = "553561594429177858";
     }
 
     /**
@@ -36,7 +38,7 @@ class DiscordAndDragons {
         });
         
         this.client.on('message', msg => {
-            if (msg.content.substring(0, 2) == "#!") {
+            if (msg.channel.id == this.channel_id && msg.content.substring(0, 2) == "#!") {
                 this.ch.interpret(msg);
                 this.logger.log(msg);
             }
