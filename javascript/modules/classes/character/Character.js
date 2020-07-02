@@ -45,6 +45,19 @@ class Character {
     }
 
     /**
+     * Returns a short string describing the most vital information of the character.
+     *
+     * Format: <name>, Level <level> <race> <class>
+     *
+     * Example: Sir Morrigan, Level 3 Human Paladin
+     * 
+     * @returns {String} A short string describing the character.
+     */
+    getCharacterShortInfo() {
+        return this.name + ", Level " + this.level.toString() + " " + this.race.name + " " + this.class.name;
+    }
+
+    /**
      * Sets the characters race.
      *
      * @param {Races.Race} race_object An appropriate Race class. 

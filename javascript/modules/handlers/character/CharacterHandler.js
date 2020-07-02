@@ -42,7 +42,13 @@ class CharacterHandler {
 
                 break;
             case "list":
-                msg.channel.send("<@" + msg.author.id + ">'s Characters: \n" + users_characters);
+                let character_string = "";
+
+                users_characters.forEach(character => {
+                    character_string += character.getCharacterShortInfo() + "\n";
+                });
+
+                msg.channel.send("<@" + msg.author.id + ">'s Characters: \n" + character_string);
 
                 break;
             case "class":
