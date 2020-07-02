@@ -13,7 +13,7 @@ class Character {
      * @param {Classes.Class} [class_object] The class of the character.
      * @param {String} owner The owners Discord ID.
      */
-    constructor(name = "Name", race = new Races.Race, class_object = new Classes.Class, owner) {
+    constructor(owner, name = "Name", race = new Races.Race, class_object = new Classes.Class) {
         /* Authorization Information */
         this.owner = owner;
 
