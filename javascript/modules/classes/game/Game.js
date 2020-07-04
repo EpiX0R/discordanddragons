@@ -2,6 +2,8 @@
  * A class that handles basic Game functions, like storing players, rotating players, etc.
 */
 
+const CharacterHandler = require("../../handlers/character/CharacterHandler");
+
 class Game {
 
     constructor(numplayers,players,dm /*etc?*/) {
@@ -15,7 +17,28 @@ class Game {
     gameInit() {
         for (var i = 0; i < numplayers; i++) {
             //Prompt current player to choose what character from DB they pick
-            pickChar(idArr[i]);
+            var charlist = CharacterHandler.getCharacterList(players[i]);
+            var playerpicked = 0;
+
+            while (!playerpicked) {
+
+                var input = readline();
+                let re = new RegExp('[0 - 9]');
+
+                console.log("Choose one of your listed characters. (write a number)");
+                for (var i = 0; i < charlist.length; i++) {
+                    /*Io is temporary*/
+                    console.log(i + ": " + charList[i].getCharacterShortInfo);
+                }
+
+                if(input.replace(re,"") == "" && input < (charlist.length-1)) {
+                    playerpicked = 1;
+                    //Need to have a way to associate which character currently
+                    // the discord user associates with
+                }
+
+            }
+
         }
 
         currplayer = dm;
