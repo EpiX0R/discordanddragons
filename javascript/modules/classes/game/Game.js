@@ -70,7 +70,7 @@ class Game {
         for (var i = 0; i < numplayers; i++) {
             var c = players[i].getActiveCharacter;
             c.roll();
-            orderArr[players[i].id] = c.lastRoll;
+            orderArr[players[i].getUserId()] = c.lastRoll;
         }
     }
 
@@ -82,7 +82,7 @@ class Game {
 
         for(var user in players)
         {
-            var value = this.orderArr[u.id];
+            var value = this.orderArr[u.getUserId()];
             if(value >= Math.max(orderArr)) {
                 currPlayer = user;
             }

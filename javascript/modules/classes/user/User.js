@@ -18,6 +18,21 @@ class User {
         this.activecharacter;
     }
 
+    /**
+    * Gets the users ID.
+    */
+    getUserId() {
+        return id;
+    }
+
+
+    /**
+    * Gets the users name.
+    */
+    getUserName() {
+        return name;
+    }
+
 
     /**
     * Gets the users current character.
