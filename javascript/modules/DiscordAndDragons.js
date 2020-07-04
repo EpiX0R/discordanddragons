@@ -3,19 +3,30 @@ const Discord = require("discord.js");
 const CommandHandler = require("./CommandHandler.js");
 const Logger = require("./base/logger.js");
 
+// Import classes
+const Character = require("../modules/classes/character/Character.js"); 
+
 /**
- * Class for the Popcorn bot
+ * Class for the DiscordAndDragons bot
  */
-class Popcorn {
+class DiscordAndDragons {
 
     /**
-     * Retrieves needed packages & files and loads configurations
+     * Links the bot to Discord through Discord.js library
      */
-    initialize() {
+    constructor() {
         this.client = new Discord.Client();
         this.secret = require("../secret/secret.js");
+    }
+
+    /**
+     * Retrieves needed modules & files and loads configurations
+     */
+    initialize() {
         this.ch = new CommandHandler();
         this.logger = new Logger();
+
+        this.channel_id = "553561594429177858";
     }
 
     /**
@@ -23,12 +34,12 @@ class Popcorn {
      */
     start() {
         this.client.on('ready', () => {
-            console.log(`${this.client.user.tag} is now popping!\n`);
+            console.log(`${this.client.user.tag} is now running!\n`);
         });
         
         this.client.on('message', msg => {
-            if (msg.content.substring(0, 2) == "#!") {
-                //this.ch.interpret(msg);
+            if (msg.channel.id == this.channel_id && msg.content.substring(0, 2) == "#!") {
+                this.ch.interpret(msg);
                 this.logger.log(msg);
             }
         });
@@ -37,4 +48,4 @@ class Popcorn {
     }
 }
 
-module.exports = Popcorn;
+module.exports = DiscordAndDragons;

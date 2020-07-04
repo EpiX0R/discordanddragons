@@ -14,13 +14,13 @@ class Logger {
         let command = msg.content.split(" ")[1];
         let args = msg.content.split(" ").slice(2);
 
-        this.getFormattedDate(date);
+        let formattedDate = this.getFormattedDate(date);
 
         // Output differntiates if there are 0 arguments that follow the command.
         if (args.length === 0) {
-            //console.log(msg.author.id + " issued '" + handler + " " + command + "'");
+            console.log(formattedDate + ": " + msg.author.id + " issued '" + handler + " " + command + "'");
         } else {
-            //console.log(msg.author.id + " issued '" + handler + " " + command + " " + args.join(" ") + "'");
+            console.log(formattedDate + ": " + msg.author.id + " issued '" + handler + " " + command + " " + args.join(" ") + "'");
         }
     }
 
@@ -32,11 +32,24 @@ class Logger {
      * @returns {String} A string in the format of "YYYY-MM-DD HH:MM:SS"
      */
     getFormattedDate(date) {
-        let output = "";
+        /* Year-Month-Date */
+        let yyyy = date.getFullYear().toString();
+        let mm = (date.getMonth()+1).toString();
+        let dd  = date.getDate().toString();
 
-        console.log(date);
+        if (mm.length === 1) mm = "0" + mm;
+        if (dd.length === 1) dd = "0" + dd;
 
-        return null;
+        /* Hour:Min:Sec */
+        let hour = date.getHours().toString();
+        let min = date.getMinutes().toString();
+        let sec = date.getSeconds().toString();
+
+        if (hour.length === 1) hour = "0" + hour;
+        if (min.length === 1) min = "0" + min;
+        if (sec.length === 1) sec = "0" + sec;
+
+        return yyyy + "-" + mm + "-" + dd + " " + hour + ":" + min + ":" + sec;
     }
 }
 
